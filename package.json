@@ -1,0 +1,23 @@
+{
+  "name": "my-money",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon -r dotenv/config api/index.js",
+    "start": "node -r dotenv/config api/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "Tatiana Muniz",
+  "license": "ISC",
+  "dependencies": {
+    "date-fns": "^2.28.0",
+    "dotenv": "^14.2.0",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.7",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15"
+  }
+}
