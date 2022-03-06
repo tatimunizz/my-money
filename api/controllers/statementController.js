@@ -6,15 +6,14 @@ import income from "../models/income.js";
 import isSameMonth from "date-fns/isSameMonth/index.js";
 import expenses from "../models/expenses.js";
 
-const getMonthExtract = async (year, month) => {
-  const incomeExtract = await totalIncome(year, month);
-  const expensesExtract = await totalExpenses(year, month);
-  const balance = monthBalance(incomeExtract.amount, expensesExtract.amount);
+const getMonthStatement = async (year, month) => {
+  const incomeStatement = await totalIncome(year, month);
+  const expensesStatement = await totalExpenses(year, month);
+  const balance = monthBalance(incomeStatement.amount, expensesStatement.amount);
   const category = await categoryExpenses(year, month);
-  console.log(category)
   return {
-    totalIncome: incomeExtract.amount,
-    totalExpenses: expensesExtract.amount,
+    totalIncome: incomeStatement.amount,
+    totalExpenses: expensesStatement.amount,
     monthBalance: balance,
     categoryExpenses: category
   };
@@ -64,5 +63,5 @@ const categoryExpenses = async (year, month) => {
 }
 
 export default {
-  getMonthExtract,
+  getMonthStatement,
 }

@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon -r dotenv/config api/index.js",
     "start": "node -r dotenv/config api/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --coverage"
   },
   "type": "module",
   "keywords": [],
@@ -16,7 +16,14 @@
     "date-fns": "^2.28.0",
     "dotenv": "^14.2.0",
     "express": "^4.17.2",
-    "mongoose": "^6.1.7",
+    "express-basic-auth": "^1.2.1",
+    "mongoose": "^6.1.7"
+  },
+  "devDependencies": {
+    "jest": "^27.5.1",
+    "babel-jest": "^27.5.1",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/plugin-transform-modules-commonjs": "^7.16.8",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.15"
   }
