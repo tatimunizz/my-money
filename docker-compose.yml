@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+  moneyApp:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    image: tatimunizz/moneyapp
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGODB_URL=${MONGODB_URL}
+      - PORT=${PORT}
+    container_name: moneyApp
