@@ -1,0 +1,2723 @@
+{
+	"info": {
+		"_postman_id": "77f4a98c-1618-480e-a9be-b6163ae0f0aa",
+		"name": "My Money App",
+		"description": "My Money API is a *family budget control system*. It can registry income and expenses and generate a monthly statement report.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Income Entry",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user\": \"Tatiana\",\r\n    \"description\": \"Selling\",\r\n    \"amount\": 5000,\r\n    \"date\": \"2023-02-15\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/income",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"income"
+					]
+				},
+				"description": "Register an income entry specifying user's name, income description, amount and date."
+			},
+			"response": [
+				{
+					"name": "-d",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"String: username\",\r\n    \"description\": \"String: income description\",\r\n    \"amount\": \"Number: income amount\",\r\n    \"date\": \"String: date format yyyy-MM-dd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/income",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"income"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "87"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"57-T78Q6uEHOdQUNCcMJwwXtXwN5VY\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 07 Mar 2022 17:08:42 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 400,\n    \"error\": \"Date format is not accepted, please use yyyy-MM-dd format\"\n}"
+				},
+				{
+					"name": "200 - Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"Tatiana\",\r\n    \"description\": \"Selling\",\r\n    \"amount\": 2500,\r\n    \"date\": \"2023-02-15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/income",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"income"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "158"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"9e-KT8328DlacKCugt43IqcrGBovjY\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 07 Mar 2022 10:40:24 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 200,\n    \"data\": {\n        \"user\": \"Tatiana\",\n        \"description\": \"Selling\",\n        \"amount\": 2500,\n        \"date\": \"2023-02-15T00:00:00.000Z\",\n        \"_id\": \"6225e11893e3a04739b6ee4c\",\n        \"__v\": 0\n    }\n}"
+				},
+				{
+					"name": "400 - Already registered entry",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"Tatiana\",\r\n    \"description\": \"Salary\",\r\n    \"amount\": 5000,\r\n    \"date\": \"2023-02-15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/income",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"income"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "69"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"45-uPX1lKlY31ziEW8rh9ddoehvXSE\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 07 Mar 2022 10:38:37 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 400,\n    \"error\": \"This entry has been registered already.\"\n}"
+				},
+				{
+					"name": "400 - Missing params",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"Tatiana\",\r\n    \"amount\": 5000,\r\n    \"date\": \"2023-02-15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/income",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"income"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "91"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5b-aJV6uC4hd+TU45yRJhE9yfxqbh0\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 07 Mar 2022 10:39:34 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 400,\n    \"error\": \"ValidationError: description: Path `description` is required.\"\n}"
+				},
+				{
+					"name": "400 - Wrong date format",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"Tatiana\",\r\n    \"description\": \"Selling\",\r\n    \"amount\": 2500,\r\n    \"date\": \"2023/02/15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/income",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"income"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "87"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"57-T78Q6uEHOdQUNCcMJwwXtXwN5VY\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 07 Mar 2022 10:41:10 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 400,\n    \"error\": \"Date format is not accepted, please use yyyy-MM-dd format\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Income List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/income",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"income"
+					]
+				},
+				"description": "Get the full income list."
+			},
+			"response": [
+				{
+					"name": "200 - Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/income",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"income"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "404"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"194-T2GcplW8CC0Exza3TGdSmQSvH3Y\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Mar 2022 20:51:42 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 200,\n    \"data\": [\n        {\n            \"description\": \"Freelance\",\n            \"amount\": 2000,\n            \"date\": \"2022-01-25T00:00:00.000Z\"\n        },\n        {\n            \"description\": \"Personal store\",\n            \"amount\": 1500,\n            \"date\": \"2022-01-15T00:00:00.000Z\"\n        },\n        {\n            \"description\": \"Salary\",\n            \"amount\": 5000,\n            \"date\": \"2022-01-30T00:00:00.000Z\"\n        },\n        {\n            \"description\": \"Salary\",\n            \"amount\": 5000,\n            \"date\": \"2022-02-15T00:00:00.000Z\"\n        },\n        {\n            \"description\": \"Salary\",\n            \"amount\": 5000,\n            \"date\": \"2023-02-15T00:00:00.000Z\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Income by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/income/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"income",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "6225e11893e3a04739b6ee4c",
+							"description": "-fixed Income ID"
+						}
+					]
+				},
+				"description": "Get an income with the specified ID."
+			},
+			"response": [
+				{
+					"name": "200 - Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/income/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"income",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6225e11893e3a04739b6ee4c",
+									"description": "-fixed Income ID"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "100"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"64-s2MXwhfp526TKEiVfHQhHCFvft4\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 07 Mar 2022 17:11:50 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 200,\n    \"data\": {\n        \"description\": \"Selling\",\n        \"amount\": 2500,\n        \"date\": \"2023-02-15T00:00:00.000Z\"\n    }\n}"
+				},
+				{
+					"name": "400 - Income ID not found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/income/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"income",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6225e11893e3a04739b6ee4c",
+									"description": "Income ID"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "81"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"51-WJebXOjXT4dxMlXV93YmA5lsV2Q\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 07 Mar 2022 17:10:08 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 400,\n    \"error\": \"There is no income with ID 61eee874a4fdb4818c452143\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Income by Month",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/income/:year/:month",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"income",
+						":year",
+						":month"
+					],
+					"variable": [
+						{
+							"key": "year",
+							"value": "2022",
+							"description": "-fixed Filter the year"
+						},
+						{
+							"key": "month",
+							"value": "2",
+							"description": "-fixed Filter the month"
+						}
+					]
+				},
+				"description": "Get all income of the same month and same year."
+			},
+			"response": [
+				{
+					"name": "200 - Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/income/:year/:month",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"income",
+								":year",
+								":month"
+							],
+							"variable": [
+								{
+									"key": "year",
+									"value": "2022",
+									"description": "Filter the year"
+								},
+								{
+									"key": "month",
+									"value": "01",
+									"description": "Filter the month"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "258"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"102-jvrXvRzv3LJVejkA247YOdWzCsQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 07 Mar 2022 17:17:08 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 200,\n    \"data\": [\n        {\n            \"description\": \"Freelance\",\n            \"amount\": 2000,\n            \"date\": \"2022-01-25T00:00:00.000Z\"\n        },\n        {\n            \"description\": \"Personal store\",\n            \"amount\": 1500,\n            \"date\": \"2022-01-15T00:00:00.000Z\"\n        },\n        {\n            \"description\": \"Salary\",\n            \"amount\": 5000,\n            \"date\": \"2022-01-30T00:00:00.000Z\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Income",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user\": \"Tatiana\",\r\n    \"description\": \"job in mountain\",\r\n    \"amount\": 500,\r\n    \"date\": \"2022-02-18\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/income/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"income",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "6225e11893e3a04739b6ee4c",
+							"description": "-fixed Income ID"
+						}
+					]
+				},
+				"description": "Update an income specifying an ID."
+			},
+			"response": [
+				{
+					"name": "-d",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"String: username\",\r\n    \"description\": \"String: income description\",\r\n    \"amount\": \"Number: income amount\",\r\n    \"date\": \"String: date format yyyy-MM-dd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/income/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"income",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6225e11893e3a04739b6ee4c",
+									"description": "Income ID"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "146"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"92-L5ZBYyrvY0R+hH4Gh/UlStEa8r0\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 07 Mar 2022 17:41:33 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 400,\n    \"error\": \"Cast to date failed for value \\\"String: date format yyyy-MM-dd\\\" (type string) at path \\\"date\\\" for model \\\"income\\\"\"\n}"
+				},
+				{
+					"name": "200 - Success",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"Tatiana\",\r\n    \"description\": \"job in mountain\",\r\n    \"amount\": 500,\r\n    \"date\": \"2022-02-18\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/income/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"income",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6225e11893e3a04739b6ee4c",
+									"description": "Incoeme ID"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "165"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a5-m3SOD0//vaPNgVwMXZSH+VoUjxM\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 07 Mar 2022 17:39:45 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 200,\n    \"data\": {\n        \"_id\": \"6225e11893e3a04739b6ee4c\",\n        \"user\": \"Tatiana\",\n        \"description\": \"job in mountain\",\n        \"amount\": 500,\n        \"date\": \"2022-02-18T00:00:00.000Z\",\n        \"__v\": 0\n    }\n}"
+				},
+				{
+					"name": "400 - Income ID not found",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"Tatiana\",\r\n    \"description\": \"job in mountain\",\r\n    \"amount\": 500,\r\n    \"date\": \"18/01/2022\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/income/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"income",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "61f04d20b3b1b7c28faba40d",
+									"description": "Incoeme ID"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "81"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"51-kymGzkmyQCLoZnCShjn3STge66U\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 07 Mar 2022 17:37:39 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 400,\n    \"error\": \"There is no income with ID 61f04d20b3b1b7c28faba40d\"\n}"
+				},
+				{
+					"name": "400 - Missing params",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"Tatiana\",\r\n    \"description\": \"job in mountain\",\r\n    \"date\": \"2022-02-18\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/income/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"income",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6225e11893e3a04739b6ee4c",
+									"description": "Incoeme ID"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "81"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"51-aJNX8jl0nEyulJONEvkumk1OqdQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 07 Mar 2022 17:39:30 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 400,\n    \"error\": \"ValidationError: amount: Path `amount` is required.\"\n}"
+				},
+				{
+					"name": "400 - Wrong date format",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"Tatiana\",\r\n    \"description\": \"job in mountain\",\r\n    \"amount\": 500,\r\n    \"date\": \"18/01/2022\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/income/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"income",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6225e11893e3a04739b6ee4c",
+									"description": "Incoeme ID"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "126"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"7e-k8AIjDXoFO18qsD2IT4aSq1gH5E\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 07 Mar 2022 17:38:32 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 400,\n    \"error\": \"Cast to date failed for value \\\"18/01/2022\\\" (type string) at path \\\"date\\\" for model \\\"income\\\"\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Income",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/income/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"income",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "6225e11893e3a04739b6ee4c",
+							"description": "-fixed Income ID"
+						}
+					]
+				},
+				"description": "Delete and income entry specifying and ID."
+			},
+			"response": [
+				{
+					"name": "200 - Success",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/income/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"income",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6225e11893e3a04739b6ee4c"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "52"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"34-P5Thlg2VozM42vWAz7brQCUl7dg\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 07 Mar 2022 17:44:29 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 200,\n    \"message\": \"Successfully delete.\"\n}"
+				},
+				{
+					"name": "400 - Income ID not found",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/income/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"income",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "61f044116d13142e55fb1f31"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "81"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"51-RA4LI+jeFvtUDn/TL8ihAGKPtVo\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 07 Mar 2022 17:43:51 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 400,\n    \"error\": \"There is no income with ID 61f044116d13142e55fb1f31\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Expenses Entry",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user\": \"String: username\",\r\n    \"description\": \"String: income description\",\r\n    \"amount\": \"Number: income amount\",\r\n    \"date\": \"String: date format yyyy-MM-dd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/expenses?category=Alimentação",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"expenses"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "Alimentação",
+							"description": "-opt Accept: 'Alimentação', 'Saúde', 'Moradia', 'Transporte', 'Educação', 'Lazer', 'Imprevistos', 'Outras'"
+						}
+					]
+				},
+				"description": "Register an expense entry specifying user's name, income description, amount and date.\n\nOptional it can be passes a category. If not specified, it will be attributed \"Outras\"."
+			},
+			"response": [
+				{
+					"name": "-d",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"String: username\",\r\n    \"description\": \"String: income description\",\r\n    \"amount\": \"Number: income amount\",\r\n    \"date\": \"String: date format yyyy-MM-dd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/expenses?category=Alimentação",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"expenses"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "Alimentação",
+									"description": "-opt Accept: 'Alimentação', 'Saúde', 'Moradia', 'Transporte', 'Educação', 'Lazer', 'Imprevistos', 'Outras'"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "87"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"57-T78Q6uEHOdQUNCcMJwwXtXwN5VY\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Mar 2022 14:06:18 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 400,\n    \"error\": \"Date format is not accepted, please use yyyy-MM-dd format\"\n}"
+				},
+				{
+					"name": "400 - Already registered entry",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"Tatiana\",\r\n    \"description\": \"Carro\",\r\n    \"amount\": 400,\r\n    \"date\": \"2022-03-01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/expenses",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"expenses"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "69"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"45-uPX1lKlY31ziEW8rh9ddoehvXSE\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Mar 2022 13:44:52 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 400,\n    \"error\": \"This entry has been registered already.\"\n}"
+				},
+				{
+					"name": "200 - Success (without specified category)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"Tatiana\",\r\n    \"description\": \"Mercado\",\r\n    \"amount\": 400,\r\n    \"date\": \"2022-03-01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/expenses",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"expenses"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "177"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"b1-7wxfFZO9qKdryRII4ePtYiTPePk\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Mar 2022 13:56:22 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 200,\n    \"data\": {\n        \"user\": \"Tatiana\",\n        \"description\": \"Mercado\",\n        \"amount\": 400,\n        \"date\": \"2022-03-01T00:00:00.000Z\",\n        \"category\": \"Outras\",\n        \"_id\": \"622b55066a4e9e13fbe8640f\",\n        \"__v\": 0\n    }\n}"
+				},
+				{
+					"name": "200 - Success (with specified category)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"Tatiana\",\r\n    \"description\": \"Mercado 2\",\r\n    \"amount\": 400,\r\n    \"date\": \"2022-03-01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/expenses?category=Alimentação",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"expenses"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "Alimentação",
+									"description": "-opt "
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "186"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"ba-SdLOLrFTClXgXa4h8RIjLGGOPa4\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Mar 2022 14:00:49 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 200,\n    \"data\": {\n        \"user\": \"Tatiana\",\n        \"description\": \"Mercado 2\",\n        \"amount\": 400,\n        \"date\": \"2022-03-01T00:00:00.000Z\",\n        \"category\": \"Alimentação\",\n        \"_id\": \"622b56116a4e9e13fbe86413\",\n        \"__v\": 0\n    }\n}"
+				},
+				{
+					"name": "400 - Missing Params",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"Tatiana\",\r\n    \"amount\": 400,\r\n    \"date\": \"2022-03-01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/expenses?category=Alimentação",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"expenses"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "Alimentação",
+									"description": "-opt Accept: 'Alimentação', 'Saúde', 'Moradia', 'Transporte', 'Educação', 'Lazer', 'Imprevistos', 'Outras'"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "91"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5b-aJV6uC4hd+TU45yRJhE9yfxqbh0\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Mar 2022 14:05:03 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 400,\n    \"error\": \"ValidationError: description: Path `description` is required.\"\n}"
+				},
+				{
+					"name": "400 - Wrong date format",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"Tatiana\",\r\n    \"description\": \"Mercado 3\",\r\n    \"amount\": 400,\r\n    \"date\": \"2022/03/01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/expenses?category=Alimentação",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"expenses"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "Alimentação",
+									"description": "-opt Accept: 'Alimentação', 'Saúde', 'Moradia', 'Transporte', 'Educação', 'Lazer', 'Imprevistos', 'Outras'"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "87"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"57-T78Q6uEHOdQUNCcMJwwXtXwN5VY\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Mar 2022 14:05:43 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 400,\n    \"error\": \"Date format is not accepted, please use yyyy-MM-dd format\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Expenses List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/expenses",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"expenses"
+					],
+					"query": [
+						{
+							"key": "description",
+							"value": "pastel",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 - Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/expenses",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"expenses"
+							],
+							"query": [
+								{
+									"key": "description",
+									"value": "pastel",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "826"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"33a-o70gykOoCzPQkx0HeFZ3oXAegm4\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Mar 2022 14:07:02 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 200,\n    \"data\": [\n        {\n            \"description\": \"Mercado\",\n            \"amount\": 1000,\n            \"date\": \"2022-01-04T00:00:00.000Z\"\n        },\n        {\n            \"description\": \"Farmácia\",\n            \"amount\": 1000,\n            \"date\": \"2022-01-04T00:00:00.000Z\"\n        },\n        {\n            \"description\": \"Aluguel\",\n            \"amount\": 500,\n            \"date\": \"2022-01-04T00:00:00.000Z\"\n        },\n        {\n            \"description\": \"Carro\",\n            \"amount\": 200,\n            \"date\": \"2022-01-04T00:00:00.000Z\"\n        },\n        {\n            \"description\": \"Shopping\",\n            \"amount\": 400,\n            \"date\": \"2022-01-04T00:00:00.000Z\"\n        },\n        {\n            \"description\": \"Carro\",\n            \"amount\": 400,\n            \"date\": \"2022-02-01T00:00:00.000Z\"\n        },\n        {\n            \"description\": \"Moto\",\n            \"amount\": 200,\n            \"date\": \"2022-02-01T00:00:00.000Z\"\n        },\n        {\n            \"description\": \"Moto\",\n            \"amount\": 200,\n            \"date\": \"2022-01-01T00:00:00.000Z\"\n        },\n        {\n            \"description\": \"Carro\",\n            \"amount\": 400,\n            \"date\": \"2022-03-01T00:00:00.000Z\"\n        },\n        {\n            \"description\": \"Mercado\",\n            \"amount\": 400,\n            \"date\": \"2022-03-01T00:00:00.000Z\"\n        },\n        {\n            \"description\": \"Mercado 2\",\n            \"amount\": 400,\n            \"date\": \"2022-03-01T00:00:00.000Z\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Expenses by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/expenses/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"expenses",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "61f0527d07503208e87d74cc",
+							"description": "-fixed Expense ID"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 - Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/expenses/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"expenses",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "622b55066a4e9e13fbe8640f",
+									"description": "-fixed Expense ID"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "99"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"63-7n0mdNYtPzsYDQzrUwQEr0tBqDk\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Mar 2022 14:19:25 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 200,\n    \"data\": {\n        \"description\": \"Mercado\",\n        \"amount\": 400,\n        \"date\": \"2022-03-01T00:00:00.000Z\"\n    }\n}"
+				},
+				{
+					"name": "400 - Expense ID not found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/expenses/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"expenses",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "622b55066a4e9e13fbe86405",
+									"description": "-fixed Expense ID"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "83"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"53-BqeOxnumMbGebxZYlQkDULh2kio\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Mar 2022 14:19:59 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 400,\n    \"error\": \"There is no expenses with ID 622b55066a4e9e13fbe86405\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Expenses by Month",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/expenses/:year/:month",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"expenses",
+						":year",
+						":month"
+					],
+					"variable": [
+						{
+							"key": "year",
+							"value": "2022",
+							"description": "-fixed Filter the year"
+						},
+						{
+							"key": "month",
+							"value": "2",
+							"description": "-fixed Filter the month"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 - Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/expenses/:year/:month",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"expenses",
+								":year",
+								":month"
+							],
+							"variable": [
+								{
+									"key": "year",
+									"value": "2022",
+									"description": "-fixed Filter the year"
+								},
+								{
+									"key": "month",
+									"value": "2",
+									"description": "-fixed Filter the month"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "169"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a9-hh7AqhCFs+L+yu8SL5DOmn89CKw\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Mar 2022 14:21:20 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 200,\n    \"data\": [\n        {\n            \"description\": \"Carro\",\n            \"amount\": 400,\n            \"date\": \"2022-02-01T00:00:00.000Z\"\n        },\n        {\n            \"description\": \"Moto\",\n            \"amount\": 200,\n            \"date\": \"2022-02-01T00:00:00.000Z\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Expenses",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user\": \"Tatiana\",\r\n    \"description\": \"lala\",\r\n    \"date\": \"2022-02-14\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/expenses/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"expenses",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "622b55066a4e9e13fbe8640f",
+							"description": "-fixed Expense ID"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 - Success",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"Tatiana\",\r\n    \"description\": \"shopping\",\r\n    \"amount\": 500,\r\n    \"date\": \"2022-02-14\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/expenses/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"expenses",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "622b55066a4e9e13fbe8640f",
+									"description": "-fixed Expense ID"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "178"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"b2-hKhKn+9Vcnz9t8Ulm/8fCKS93Xg\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Mar 2022 14:56:19 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 200,\n    \"data\": {\n        \"_id\": \"622b55066a4e9e13fbe8640f\",\n        \"user\": \"Tatiana\",\n        \"description\": \"shopping\",\n        \"amount\": 500,\n        \"date\": \"2022-02-14T00:00:00.000Z\",\n        \"category\": \"Outras\",\n        \"__v\": 0\n    }\n}"
+				},
+				{
+					"name": "400 - Expense ID not found",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"Tatiana\",\r\n    \"description\": \"shopping\",\r\n    \"amount\": 500,\r\n    \"date\": \"2022-02-14\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/expenses/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"expenses",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "622b55066a4e9e13fbe8640a",
+									"description": "-fixed Expense ID"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "83"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"53-Gg3Ha3CFjmsTtXzQmM+/zh+gNP0\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Mar 2022 14:56:47 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 400,\n    \"error\": \"There is no expenses with ID 622b55066a4e9e13fbe8640a\"\n}"
+				},
+				{
+					"name": "400 - Missing params",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"Tatiana\",\r\n    \"description\": \"lala\",\r\n    \"date\": \"2022-02-14\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/expenses/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"expenses",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "622b55066a4e9e13fbe8640f",
+									"description": "-fixed Expense ID"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "81"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"51-aJNX8jl0nEyulJONEvkumk1OqdQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Mar 2022 14:58:02 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 400,\n    \"error\": \"ValidationError: amount: Path `amount` is required.\"\n}"
+				},
+				{
+					"name": "400 -Wrong date format",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"Tatiana\",\r\n    \"description\": \"shopping\",\r\n    \"amount\": 500,\r\n    \"date\": \"01/14/2022\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/expenses/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"expenses",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "622b55066a4e9e13fbe8640f",
+									"description": "-fixed Expense ID"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "87"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"57-T78Q6uEHOdQUNCcMJwwXtXwN5VY\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Mar 2022 14:55:35 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 400,\n    \"error\": \"Date format is not accepted, please use yyyy-MM-dd format\"\n}"
+				},
+				{
+					"name": "400 - Alredy updated",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"Tatiana\",\r\n    \"description\": \"shopping\",\r\n    \"amount\": 500,\r\n    \"date\": \"2022-02-14\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/expenses/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"expenses",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "622b55066a4e9e13fbe8640f",
+									"description": "-fixed Expense ID"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "69"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"45-uPX1lKlY31ziEW8rh9ddoehvXSE\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Mar 2022 14:57:25 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 400,\n    \"error\": \"This entry has been registered already.\"\n}"
+				},
+				{
+					"name": "-d",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"String: username\",\r\n    \"description\": \"String: income description\",\r\n    \"amount\": \"Number: income amount\",\r\n    \"date\": \"String: date format yyyy-MM-dd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/expenses/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"expenses",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "622b55066a4e9e13fbe8640f",
+									"description": "-fixed Expense ID"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "148"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"94-2adocXf7v1ZzLmW3j1a73s5ZR9A\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Mar 2022 14:58:38 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 400,\n    \"error\": \"Cast to date failed for value \\\"String: date format yyyy-MM-dd\\\" (type string) at path \\\"date\\\" for model \\\"expenses\\\"\"\n}"
+				},
+				{
+					"name": "Update Expenses",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"Tatiana\",\r\n    \"description\": \"lala\",\r\n    \"date\": \"2022-02-14\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/expenses/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"expenses",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "622b55066a4e9e13fbe8640a",
+									"description": "-fixed Expense ID"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "83"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"53-Gg3Ha3CFjmsTtXzQmM+/zh+gNP0\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Mar 2022 15:00:01 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 400,\n    \"error\": \"There is no expenses with ID 622b55066a4e9e13fbe8640a\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Expenses",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/expenses/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"expenses",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "622b55066a4e9e13fbe8640f",
+							"description": "-fixed Expense ID"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 - Success",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/expenses/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"expenses",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "622b55066a4e9e13fbe8640f",
+									"description": "-fixed Expense ID"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "52"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"34-P5Thlg2VozM42vWAz7brQCUl7dg\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Mar 2022 14:59:39 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 200,\n    \"message\": \"Successfully delete.\"\n}"
+				},
+				{
+					"name": "400 - Expense ID not found",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/expenses/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"expenses",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "622b55066a4e9e13fbe8640a",
+									"description": "-fixed Expense ID"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "83"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"53-Gg3Ha3CFjmsTtXzQmM+/zh+gNP0\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Mar 2022 15:00:40 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 400,\n    \"error\": \"There is no expenses with ID 622b55066a4e9e13fbe8640a\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Month Statement",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/statement/:year/:month",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"statement",
+						":year",
+						":month"
+					],
+					"variable": [
+						{
+							"key": "year",
+							"value": "2022",
+							"description": "-fixed Filter by year"
+						},
+						{
+							"key": "month",
+							"value": "2",
+							"description": "-fixed Filter by month"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 - Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/statement/:year/:month",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"statement",
+								":year",
+								":month"
+							],
+							"variable": [
+								{
+									"key": "year",
+									"value": "2022",
+									"description": "-fixed Filter by year"
+								},
+								{
+									"key": "month",
+									"value": "2",
+									"description": "-fixed Filter by month"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "388"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"184-z5c2+5dqM2u1UVQinZWdAo2P9NQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Mar 2022 15:02:09 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status_code\": 200,\n    \"data\": {\n        \"totalIncome\": 5000,\n        \"totalExpenses\": 600,\n        \"monthBalance\": 4400,\n        \"categoryExpenses\": [\n            {\n                \"category\": \"Alimentação\",\n                \"total\": 0\n            },\n            {\n                \"category\": \"Saúde\",\n                \"total\": 0\n            },\n            {\n                \"category\": \"Moradia\",\n                \"total\": 0\n            },\n            {\n                \"category\": \"Transporte\",\n                \"total\": 200\n            },\n            {\n                \"category\": \"Educação\",\n                \"total\": 0\n            },\n            {\n                \"category\": \"Lazer\",\n                \"total\": 0\n            },\n            {\n                \"category\": \"Imprevistos\",\n                \"total\": 0\n            },\n            {\n                \"category\": \"Outras\",\n                \"total\": 400\n            }\n        ]\n    }\n}"
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "secret",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "admin",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000"
+		}
+	]
+}
