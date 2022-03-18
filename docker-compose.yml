@@ -1,13 +1,21 @@
 version: '3.9'
 services:
   moneyApp:
-    build:
-      dockerfile: Dockerfile
-      context: .
     image: tatimunizz/moneyapp
-    ports:
-      - "3000:3000"
+    build: .
     environment:
       - MONGODB_URL=${MONGODB_URL}
       - PORT=${PORT}
-    container_name: moneyApp
+      - PASSWORD=${PASSWORD}
+    command:
+      - npm
+      - run
+      - dev
+    volumes:
+      - .:/tatimunizz/moneyapp
+      - node_modules:/tatimunizz/moneyapp/node_modules
+    ports:
+      - "3000:3000"
+    
+volumes:
+  node_modules: {}

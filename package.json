@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon -r dotenv/config api/index.js",
-    "start": "node -r dotenv/config api/index.js"
+    "start": "node -r dotenv/config api/index.js",
+    "dev:docker": "docker-compose up --build moneyApp"
   },
   "type": "module",
   "keywords": [],
