@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon -r dotenv/config api/index.js",
-    "start": "node -r dotenv/config api/index.js",
-    "test": "jest --coverage"
+    "start": "node -r dotenv/config api/index.js"
   },
   "type": "module",
   "keywords": [],
@@ -21,9 +20,6 @@
   },
   "devDependencies": {
     "jest": "^27.5.1",
-    "babel-jest": "^27.5.1",
-    "@babel/preset-env": "^7.16.11",
-    "@babel/plugin-transform-modules-commonjs": "^7.16.8",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.15"
   }
