@@ -10,7 +10,7 @@ I have choose working with Javascript, using Nodejs framework and a few librarie
 
 It stills under development. Next steps: fix status code of some of the requests; make e2e tests, probably using jest, or native Nodejs test runner.
 
-This documentation was made using the wonderfull <link href="https://github.com/cesargos/cli-doc-maker" target="_blank">doc-maker cli</link> that takes Postman doc and transforms to a readme.md for github.
+This documentation was made using the [doc-maker cli](https://github.com/cesargos/cli-doc-maker) that takes Postman doc and transforms to a readme.md for github.
 
 
 <br><br>
