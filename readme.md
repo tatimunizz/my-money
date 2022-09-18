@@ -8,8 +8,6 @@ It was made during the Alura Backend Challenge week. Alura is a Brazilian online
 
 I have choose working with Javascript, using Nodejs framework and a few libraries such as express and date-fns. For the database, I really enjoy working with MongoDB.
 
-It stills under development. Next steps: fix status code of some of the requests; make e2e tests, probably using jest, or native Nodejs test runner.
-
 This documentation was made using the [doc-maker cli](https://github.com/cesargos/cli-doc-maker) that takes Postman doc and transforms to a readme.md for github.
 
 
