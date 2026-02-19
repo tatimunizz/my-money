@@ -9,9 +9,11 @@ It was made during the Alura Backend Challenge week. Alura is a Brazilian online
 I have choose working with Javascript, using Nodejs framework and a few libraries such as express and date-fns. For the database, I really enjoy working with MongoDB.
 
 This documentation was made using the [doc-maker cli](https://github.com/cesargos/cli-doc-maker) that takes Postman doc and transforms to a readme.md for github.
-
-
 <br><br>
+
+*To try this API, please, send me a URL and Authorization code request via e-mail or face-to-face.*
+
+<br>
 
 
 * [1. Income Entry](#1)
