@@ -15,6 +15,7 @@ server.use(basicAuth({
   users: { 'admin': PASSWORD }
 }));
 
+
 server.use('/', router);
 server.listen(PORT, () => {
   console.log(`Server on http://localhost:${PORT}`);
