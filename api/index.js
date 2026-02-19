@@ -10,6 +10,7 @@ const server = express();
 
 server.use(morgan('tiny'));
 server.use(express.json());
+
 server.use(basicAuth({
   users: { 'admin': PASSWORD }
 }));
