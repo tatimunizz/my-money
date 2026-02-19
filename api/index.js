@@ -17,6 +17,9 @@ server.use(basicAuth({
 
 
 server.use('/', router);
-server.listen(PORT, () => {
-  console.log(`Server on http://localhost:${PORT}`);
-});
+
+// server.listen(PORT, () => {
+//   console.log(`Server on http://localhost:${PORT}`);
+// });
+
+export default server;
