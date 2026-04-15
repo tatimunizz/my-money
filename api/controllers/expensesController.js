@@ -32,6 +32,7 @@ const getExpensesList = async (query) => {
     if (expense.length > 0) {
       return expense.map(expense => {
         return {
+          user: expense.user,
           description: expense.description,
           amount: expense.amount,
           date: expense.date,
@@ -44,6 +45,7 @@ const getExpensesList = async (query) => {
 
   return expensesList.map(expense => {
     return {
+      user: expense.user,
       description: expense.description,
       amount: expense.amount,
       date: expense.date,
@@ -57,6 +59,7 @@ const getExpensesById = async (id) => {
     throw new Error (`There is no expenses with ID ${id}`);
   }
   return {
+    user: expense.user,
     description: expense.description,
     amount: expense.amount,
     date: expense.date,
@@ -69,6 +72,7 @@ const getExpensesByMonth = async (month, year) => {
     return isSameMonth(new Date(`${year}-${month}-01 00:00`), new Date(expense.date))
   }).map(expense => {
     return {
+      user: expense.user,
       description: expense.description,
       amount: expense.amount,
       date: expense.date,

@@ -6,11 +6,12 @@ import income from "../models/income.js";
 import isSameMonth from "date-fns/isSameMonth/index.js";
 import expenses from "../models/expenses.js";
 
-const getMonthStatement = async (year, month) => {
-  const incomeStatement = await totalIncome(year, month);
-  const expensesStatement = await totalExpenses(year, month);
+// MODIFICADO: Aceitar parâmetro user
+const getMonthStatement = async (year, month, user) => {
+  const incomeStatement = await totalIncome(year, month, user);
+  const expensesStatement = await totalExpenses(year, month, user);
   const balance = monthBalance(incomeStatement.amount, expensesStatement.amount);
-  const category = await categoryExpenses(year, month);
+  const category = await categoryExpenses(year, month, user);
   return {
     totalIncome: incomeStatement.amount,
     totalExpenses: expensesStatement.amount,
@@ -19,27 +20,36 @@ const getMonthStatement = async (year, month) => {
   };
 }
 
-const totalIncome = async (year, month) => {
+// MODIFICADO: Filtrar por usuário
+const totalIncome = async (year, month, user) => {
   const incomeList = await incomeController.getIncomeByMonth(month, year);
-  return incomeList.reduce((previousValue, currentValue) => ({amount: previousValue.amount + currentValue.amount}));
+  // Filtrar apenas incomes do usuário específico
+  const userIncomes = incomeList.filter(income => income.user === user);
+  return userIncomes.reduce((previousValue, currentValue) => ({amount: previousValue.amount + currentValue.amount}), {amount: 0});
 }
 
-const totalExpenses = async (year, month) => {
+// MODIFICADO: Filtrar por usuário
+const totalExpenses = async (year, month, user) => {
   const expensesList = await expensesController.getExpensesByMonth(month, year);
-  return expensesList.reduce((previousValue, currentValue)=> ({amount: previousValue.amount + currentValue.amount}));
+  // Filtrar apenas expenses do usuário específico
+  const userExpenses = expensesList.filter(expense => expense.user === user);
+  return userExpenses.reduce((previousValue, currentValue)=> ({amount: previousValue.amount + currentValue.amount}), {amount: 0});
 }
 
 const monthBalance = (income, expenses) => {
   return income - expenses;
 }
 
-const categoryExpenses = async (year, month) => {
+// MODIFICADO: Filtrar por usuário
+const categoryExpenses = async (year, month, user) => {
   let amountSom;
   let amountList = [];
   const expensesList = await Expenses.find({}).exec();
   const categories = ['Alimentação', 'Saúde', 'Moradia', 'Transporte', 'Educação', 'Lazer', 'Imprevistos', 'Outras'];
-  const filteredList =  expensesList.filter(expense => {
-    return isSameMonth(new Date(`${year}-${month}-01 00:00`), new Date(expense.date))
+  
+  // Filtrar por mês E por usuário
+  const filteredList = expensesList.filter(expense => {
+    return isSameMonth(new Date(`${year}-${month}-01 00:00`), new Date(expense.date)) && expense.user === user;
   });
 
   return categories.map((category, index) => {

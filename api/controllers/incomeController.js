@@ -26,6 +26,7 @@ const getIncomeList = async (query) => {
     if (income.length > 0) {
       return income.map(income => {
         return {
+          user: income.user,
           description: income.description,
           amount: income.amount,
           date: income.date,
@@ -38,6 +39,7 @@ const getIncomeList = async (query) => {
 
   return incomeList.map(income => {
     return {
+      user: income.user,
       description: income.description,
       amount: income.amount,
       date: income.date,
@@ -51,6 +53,7 @@ const getIncomeById = async (id) => {
     throw new Error (`There is no income with ID ${id}`);
   }
   return {
+    user: income.user,
     description: income.description,
     amount: income.amount,
     date: income.date,
@@ -63,6 +66,7 @@ const getIncomeByMonth = async (month, year) => {
     return isSameMonth(new Date(`${year}-${month}-01 00:00`), new Date(income.date))
   }).map(income => {
     return {
+      user: income.user,
       description: income.description,
       amount: income.amount,
       date: income.date,
