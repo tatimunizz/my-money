@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import basicAuth from 'express-basic-auth'
 import morgan from 'morgan';
 import router from '../api/routes/index.js';
@@ -8,6 +9,7 @@ const PORT = process.env.PORT;
 const PASSWORD = process.env.PASSWORD;
 const server = express();
 
+server.use(cors());
 server.use(morgan('tiny'));
 server.use(express.json());
 
