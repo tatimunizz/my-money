@@ -30,6 +30,7 @@ const getIncomeList = async (query) => {
           description: income.description,
           amount: income.amount,
           date: income.date,
+          _id: income._id
         }
       });
     }
@@ -43,6 +44,7 @@ const getIncomeList = async (query) => {
       description: income.description,
       amount: income.amount,
       date: income.date,
+      _id: income._id
     }
   });
 }
@@ -57,6 +59,7 @@ const getIncomeById = async (id) => {
     description: income.description,
     amount: income.amount,
     date: income.date,
+    _id: income._id
   }
 }
 
@@ -70,6 +73,7 @@ const getIncomeByMonth = async (month, year) => {
       description: income.description,
       amount: income.amount,
       date: income.date,
+      _id: income._id
     }
   });
 }

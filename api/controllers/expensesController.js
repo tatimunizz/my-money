@@ -36,6 +36,7 @@ const getExpensesList = async (query) => {
           description: expense.description,
           amount: expense.amount,
           date: expense.date,
+          _id: expense._id
         }
       })
     }
@@ -49,6 +50,7 @@ const getExpensesList = async (query) => {
       description: expense.description,
       amount: expense.amount,
       date: expense.date,
+      _id: expense._id
     }
   });
 }
@@ -63,6 +65,7 @@ const getExpensesById = async (id) => {
     description: expense.description,
     amount: expense.amount,
     date: expense.date,
+    _id: expense._id
   }
 }
 
@@ -76,6 +79,7 @@ const getExpensesByMonth = async (month, year) => {
       description: expense.description,
       amount: expense.amount,
       date: expense.date,
+      _id: expense._id
     }
   });
 }
